@@ -8,4 +8,3 @@ def all_even():
 if __name__ == '__main__':
     print all_even().next()
     print all_even().next()
-    print all_even().next()
