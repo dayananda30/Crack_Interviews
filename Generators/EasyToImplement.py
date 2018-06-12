@@ -20,3 +20,4 @@ class PowTwo:
         while n < max:
             yield 2 ** n
             n += 1
+

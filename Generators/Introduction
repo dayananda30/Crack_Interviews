@@ -26,7 +26,7 @@ Why Generators?
         This is an overkill if the number of items in the sequence is very large.
         Generator implementation of such sequence is memory friendly and is preferred since it only produces one item at a time.
     3. Represent infinite stream
-    4. Pipeline generators.
+    4. Pipeline generators..
 
 
 Initialisation:
