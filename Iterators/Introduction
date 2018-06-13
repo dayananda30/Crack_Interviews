@@ -1,0 +1,29 @@
+URL: https://www.programiz.com/python-programming/iterator
+
+
+What is Iterator?
+Iterator in Python is simply an object that can be iterated upon. An object which will return data, one element at a time.
+Python iterator object must implement two special methods, __iter__() and __next__()
+
+list,string and tuples are iterables.
+
+
+Pseudo Code:
+
+for element in iterable:
+    #Do Something with the element
+
+
+equaivalent to
+# create an iterator object from that iterable
+iter_obj = iter(iterable)
+
+# infinite loop
+while True:
+    try:
+        # get the next item
+        element = next(iter_obj)
+        # do something with element
+    except StopIteration:
+        # if StopIteration is raised, break from loop
+        break
