@@ -1,0 +1,20 @@
+URl: https://docs.python.org/2/library/json.html
+
+
+What is JSON:
+JSON is Java Script Object Notation.
+It's a light weight data interchange format.
+Used to store data in key value fashion which enhances more readbility for an end user.
+
+
+Why JSON?
+
+    1. Its easy to read and write
+    2.Its fast and compact
+    3.Ideal for ordered list or key/value pairs
+    4.Maps perfectly to most programming languages with hash tables.
+
+
+
+
+
