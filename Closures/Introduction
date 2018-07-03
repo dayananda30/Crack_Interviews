@@ -1,0 +1,18 @@
+URL : https://www.geeksforgeeks.org/python-closures/
+      https://www.programiz.com/python-programming/closure
+
+
+Closures:
+---------
+    Functions which are defined inside another function are called nested functions. Nested functions can access
+    variables inside the enclosure scope.
+
+
+    Closure is a function object that remembers values in enclosing scopes eventhough they are not in the memory.
+
+
+
+When and Why to Closures:
+-------------------------
+    1.  As Closures are used as a call back functions, they provide some sort of data hiding. This helps us to reduce
+        the use of global variables.
