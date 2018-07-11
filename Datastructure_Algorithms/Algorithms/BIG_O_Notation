@@ -1,0 +1,95 @@
+URl: https://www.youtube.com/watch?v=v4cd1O4zkGw&list=PLX6IKgS15Ue02WDPRCmYKuZicQHit9kFt
+
+
+
+BIG - O:
+-------
+How time scales with respect to some input varibles.
+
+
+pseudocode:
+def contains(arr,x):
+    for item in arr:
+        if item==x:
+            rturn True
+        else:
+            return False
+
+The time complexity of above code is O(N) -> Where N is the size of an array.
+
+
+
+def printPairs(arr):
+    for x in arr:
+        for y in arr:
+            print x,y
+
+The time complexity of above code is O(N2) -> because it has to loop twice the size of an array.
+
+
+Note:
+-----
+    N variable can be anything that is directly propotional to time.
+
+
+How to evaluate a program:
+--------------------------
+
+    Step 1 : Different steps get added:
+    -----------------------------------
+        function doSomething():
+            doStep1()  // O(a)             // O(a+b)
+            doStep2()  // O(b)
+
+
+    Step 2 : Drop Constants:
+    ------------------------
+        finding minimum and maximun number in an array.
+
+        def findminmax(arr):
+            min,max = NULL
+            for item in arr:
+                min = min(arr) //O(N)
+            for item in arr:                      //O(N)
+                max = max(arr) //O(N)
+
+         other way to find the min and max in an array:
+
+        def findminmax(arr):
+            min,max = NULL
+            for item in arr:        //O(N)
+                min = min(arr)
+                max = max(arr)
+
+        Constants are always O(N) eventhough in the first case it is O(N2) ==> O(N)
+
+
+    Step 3 : If you have different inputs then you use defferent variables to represent that:
+    -----------------------------------------------------------------------------------------
+        def evaluate(arrA , arrB):
+            for i in arrA:
+                doSomthing()
+            for j in arrB:
+                doSomething()
+        Since there are two arrays hence your Big O formaula should represent two arrays
+        O(axb) ==> Where a is the length of array A and b is the length of array B.
+
+
+    Step 4 : Drop non-dominant terms:
+    ---------------------------------
+        def function(array):        //O(N)
+            for i in array:
+                doSomething()
+
+            for j in array:         //O(N2)
+                for k in array:
+                    doSomething()
+
+        O(N2) <= O(N + N2) <= O(N2 + N2)
+        Conclusion ===>  O(N + N2) ==> O(N2)
+
+
+
+
+
+    Step 3 :
