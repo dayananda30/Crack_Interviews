@@ -1,0 +1,8 @@
+Dictionaries
+------------
+It is recommended to use the built in "dict" data type.
+
+It is versatile and optimised hash table implementaion that built directly into the core language.
+
+
+Complexity : O(1) - Average time.

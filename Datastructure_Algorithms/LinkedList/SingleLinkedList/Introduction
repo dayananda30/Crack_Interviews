@@ -1,0 +1,67 @@
+
+https://www.pythoncentral.io/singly-linked-list-insert-node/
+
+How to Create the Singly Linked List:
+--------------------------------------
+
+Creating Classes:
+=================
+
+Class Node
+===========
+Firstly, we must create a node inorder to create a singly linked list. To do this, we create a class Node with data and nextnode attributes.
+The default value of nextnode to be None.
+
+we can use getter and setter methods to do this.
+
+
+Class SingleLinkedList
+======================
+Now that the Node class is created, it is time to create the LinkedList class.
+This has only one attribute HEAD = None by default indicating it is empty.
+To keep track of number of nodes in the LinkedList, we can add a size attribute to the LinkedList and default it to 0
+
+
+Inserting a Node
+================
+
+This is the method of the SingleLinked Class.
+To make the coding simple and efficient we add the ne node to the beginning of the linkedlist.
+In other words, the head will always point to the most recently added node.
+
+
+example:
+========
+
+Let's say we need to add 30 to a linked list. we need to do following steps:
+
+    Step 1 : Create a node object with 7 as the data and the next pointing to HEAD node.
+    Step 2 : Point the HEAD Pointer to this new node.
+
+    Finally increment the size by 1.
+
+
+
+Remove Node from the LinkedList:
+================================
+Algorithm:
+
+Step 1 : have two two pointers:
+    1.1  curr - Intially to points to head
+    1.2  prev - intially points to None
+
+Step 2 : If inputted value matches the data of cur:
+    2.1 : Check prev exists
+        2.1.1  : If Yes, set next node of prev to next node of curr.
+        2.2.2  : If no, simply point the head to next node of curr( this happens when you want to delete the first node)
+        2.2.3  : Decrement the size by 1
+        2.2.4  : Return True
+
+Step 3 : If inputted value doesn't match the data of cur:
+    3.1 : proceed to next node by:
+        3.1.1 : point prev to cur
+        3.2.2 : pointing cur to next node of cur
+
+Step 4 : Repeat the steps 1-3 till the end of the list
+Step 5 : If the end of the linked list is reached, return false indicating no
+         elemenent in the linked list matches the inputted value.

@@ -1,0 +1,23 @@
+Arrays:
+-------
+
+An Array is a fundametal data structure available in most programming language.
+
+Arrays consist of fixed sixe of records that allow each element to be effeciently located using the index.
+
+Because Arrays stores the data in adjoining blocks of memory, they're considered contiguous data structures.
+
+Performance wise it's very fast to llok up an element.
+
+time complexity : O(1)
+
+
+Python has different types of arrays:
+1. List
+2. Tuple
+3. Set
+4. str
+5. byteArray
+
+
+
