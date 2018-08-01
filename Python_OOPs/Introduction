@@ -1,0 +1,73 @@
+What is Inheritance? example-1.py
+====================
+Inheritance is a feature of Object Oriented Programming. It is used to specify that one class will get most or all of its features from its parent class.
+It is a very powerful feature which facilitates users to create a new class with a few or more modification to an existing class.
+The new class is called child class or derived class and the main class from which it inherits the properties is called base class or parent class.
+
+
+The child class or derived class inherits the features from the parent class, adding new features to it. It facilitates re-usability of code.
+
+
+Syntax:
+=======
+
+class ParentClass(Object):
+    method1
+    method2
+
+class DerivedClass(ParentClass):
+    overide method1
+    overide method2
+    method3
+
+
+
+
+Multilevel Inheritance: example-2.py
+=======================
+We can inherit a derived class from another derived class, this process is known as multilevel inheritance. In Python, multilevel inheritance can be done at any depth.
+
+
+Baseclass   (Feature of Baseclass)
+    |
+    |
+    |
+DerivedClass1   (Feature of Baseclass + Feature of Derivedclass1)
+    |
+    |
+    |
+DerivedClass2   (Feature of Baseclass + Feature of Derivedclass 1 + Feature of Derivedclass 2)
+
+
+
+
+
+Multiple Inheritance:  example-3.py
+=====================
+ It allows us to inherit multiple parent classes. We can derive a child class from more than one base (parent) classes.
+
+
+syntax:
+class Base1:
+    pass
+
+class Base2:
+    pass
+
+class MultiDerived(Base1, Base2):
+    pass
+
+
+
+
+Why Super() Keyword:    example-4.py
+====================
+The super() method is most commonly used with __init__ function in base class.
+This is usually the only place where we need to do some things in a child then complete the initialization in the parent.
+
+
+
+
+Super() Usgae:   example-5.py
+==============
+

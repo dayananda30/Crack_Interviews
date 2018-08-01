@@ -39,7 +39,6 @@ class vncConnect:
         print("The Image name is : {}".format(self.img_name))
         #output =  image_to_string(Image.open(self.img_name),lang='')
         output = image_to_string(Image.open(self.img_name), lang='eng', config='-psm 6')
-        #output = str(output)
         print(output)
         return output
 
