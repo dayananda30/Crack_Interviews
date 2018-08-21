@@ -1,0 +1,102 @@
+Regular Expressions:
+====================
+
+. ^ $ * + ? { } [ ] \ | ( )
+
+re is the python inbuilt library to support regular expression.
+
+1. [ ] :
+========
+    The first metacharacters we’ll look at are [ and ]. They’re used for specifying a character class, which is a set of characters that you wish to match.
+    Characters can be listed individually, or a range of characters can be indicated by giving two characters and separating them by a '-'.
+    For example, [abc] will match any of the characters a, b, or c; this is the same as [a-c], which uses a range to express the same set of characters.
+    If you wanted to match only lowercase letters, your RE would be [a-z].
+
+
+     Metacharacters are not active inside classes.
+     For example, [akm$] will match any of the characters 'a', 'k', 'm', or '$'; '$' is usually a metacharacter, but inside a character class it’s stripped of its special nature
+
+
+    1.1 ^ symbol outside the class:
+    ===============================
+        You can match the characters not listed within the class by complementing the set.
+        This is indicated by including a '^' as the first character of the class; '^' outside a character class will simply match the '^' character. For example, [^5] will match any character except '5'.
+
+
+    1.2 \ symbol to suppress the special meaning:
+    =============================================
+        Perhaps the most important metacharacter is the backslash, \. As in Python string literals, the backslash can be followed by various characters to signal various special sequences.
+        It’s also used to escape all the metacharacters so you can still match them in patterns;
+        for example, if you need to match a [ or \, you can precede them with a backslash to remove their special meaning: \[ or \\.
+
+    1.3 To represent digits, whitespaces using \:
+    =============================================
+        Some of the special sequences beginning with '\' represent predefined sets of characters that are often useful, such as the set of digits, the set of letters, or the set of anything that isn’t whitespace
+
+        example:
+            \d   =>   Matches any decimal digit; this is equivalent to the class [0-9].
+            \D   =>   Matches any non-digit character; this is equivalent to the class [^0-9].
+            \s   =>   Matches any whitespace character; this is equivalent to the class [ \t\n\r\f\v].
+            \S   =>   Matches any non-whitespace character; this is equivalent to the class [^ \t\n\r\f\v].
+            \w   =>   Matches any alphanumeric character; this is equivalent to the class [a-zA-Z0-9_].
+            \W   =>   Matches any non-alphanumeric character; this is equivalent to the class [^a-zA-Z0-9_].
+
+
+    1.4 Repeating patterns:
+    =======================
+        * - Matches zero or more occurance of previous character or class.
+        ? - Matches zero or one occurance of previous character.
+        + - Matches one or more occurance of previous character.
+
+    1.5 {m,n} where m and n are decimal integers:
+    =============================================
+        This qulaifier means there must be "M" repeitions and at most "N"
+        For example:
+        For example, a/{1,3}b will match 'a/b', 'a//b', and 'a///b'. It won’t match 'ab', which has no slashes, or 'a////b', which has four.
+
+        on the other hand :
+        {0,} is equaivalent to * ,
+        {1,} is equaivalent to + and
+        {0,1} is equaivalent to ?.
+
+
+
+
+Drawback of Regular String in Python:
+=====================================
+    Inorder to express single backslash(/) in python , you need to enter '//' to suppress its original meaning.
+    In order to express // , you need to enter //// in python.
+    It looks cumbersome to read as the escape sequenes grows in propotion to expression and difficult to understand and read as well.
+
+Solution to above problem is Python's Raw string notation:
+==========================================================
+    backslashes are bot handled in a speacial way if they're prefixed with r'
+    example :   r"\n" is a two-character string containing '\' and 'n'
+
+
+    Regular String	        Raw string
+      "ab*"	                r"ab*"
+      "\\\\section"	        r"\\section"
+      "\\w+\\s+\\1"	        r"\w+\s+\1"
+
+
+
+Performing Matches:
+==================
+    1.  Match()   : Determine if RE matches at the beginning of the string . retuens none
+    2.  Search()  : Scan through a string and looking for a location where RE matches. returns none
+    3.  findall() : Find all the substring which RE matches and returns as a list.
+    4.  finditer(): Find all the substring which RE matches and returns as an iterator
+
+    match() and search() return None if no match can be found.
+    If they’re successful, a match object instance is returned, containing information about the match: where it starts and ends, the substring it matched, and more.
+
+    matchobject conatins the information about the matching string.
+    matchobj instance has several methods
+
+        1. group()  :Returns the string matched by RE.
+        2. start()  :Returns the starting position of the match
+        3. end()    :Rteurns the rnding position of the match.
+        4. span()   :Returns a tuple which contains the start and end of the match (start,end)
+
+
