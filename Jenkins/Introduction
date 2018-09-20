@@ -1,0 +1,189 @@
+
+Jenkin:
+=======
+ is a Java application used it for CI-CD.
+
+
+Step 1 : Download the Jenkins.war
+Step 2 : Place the war file in your local desktop.
+Step 3 : goto the terminal where war file presents
+         Run java -jar jenkins.war   or java -jar jenkins.war --httpPort=89
+
+         Winstone is the server which runs on the port 8080
+         Admin password : f702c9fcd40649aba16a17d6888a90b2
+
+         localhost:8080 - install suggested plugins
+
+
+How to setup Jenkins on Tomcat:
+===============================
+we can deploy Jenkins on any one of the following servlet containers:
+    1. Glassfish
+    2. Tomcat
+    3. IBM WebSphere
+    4. Weblogic
+
+Requistites:
+============
+    1. Tomcat 5 or above
+    2. Java
+
+Step 1 : Download the Tomcat
+
+Step 2 : Unzip and place it somewhere.
+
+Step3 : Copy and paste jenkins.war file inside Tomcat/Webapps folder.
+
+Step 4 : Goto Command prompt
+         Goto tomcat/bin directory
+         make all files executables
+
+Step 5 : Start the tomcat server
+        ./startup.sh
+
+
+
+
+To know, Where our Jenkin logs are storing:
+============================================
+Step 1 : Goto Jenkin home page -> Manage Jenkins -> Configure Systems -> Home Directory -> gives you the location where logs are storing.
+
+
+Step 2 : create a new folder where you want re-direct your Jenkins Logs
+
+Step 3 : Copy all data which is inside /usr/drd1/.jenkins/* to newly created folders
+
+Step 4 : change the ENV variable JENKINS_HOME to newly created folder path
+         in case of mac -> export JENKINS_HOME= <absolute path>
+
+Step 5 : Retstart the Jenkin
+         ctrl + C or jenkin url/restart
+
+Note : we can find all the system variables under jenkin url/system_info
+
+
+Command Line Interface:
+=======================
+Why?
+    easier
+    faster
+    memory efficiency
+    Continuous integration
+
+Step 1: Start Jenkin server
+
+Step 2 : goto Manage Jenkins -> Configure Global Security -> enable security checkbox
+
+Step 3 : goto - http://localhost:8080/cli/
+
+Step 4 : download jerkins-cli jar. Place at any location.
+
+Step 5 : test the jenkins command line is working
+
+
+Jenkins Beginner Tutorial 5 - How to create Users + Manage + Assign Roles
+==========================================================
+Jenkins authentication and authorization
+
+Today we will learn:
+———————————
+How to create New Users
+How to configure users
+How to create new roles
+How to assign users to roles
+How to Control user access on projects
+
+
+Step 1 : Create new users
+
+        Manage Jenkins -> Manage Users -> create an user.
+
+Step 2 : Configure users
+
+         Login with the respective user which needs to be configured. click on the top corner drop down and configure it.
+
+Step 3 : Create and manage user roles Roles Strategy Plugin - download - restart jenkins
+
+        Plugin called Role Stratergy Plugin.
+
+        Manage Jenkin -> Manage Plugins
+
+Step 4 : Manage Jenkins - Configure Global Security - Authorisation - Role Based Strategy Radio button should be enabled.
+
+         Note: If you don''t enable role based stratergy, any user can access and all the users have admin previleges.
+
+         Once we enabled role based statergy, only admin can able to access Jenkin Jobs and rest all users are restricted.
+
+
+Step 5 : Create Roles and Assign roles to users
+
+        Manage Jenkins -> manage and Assign Roles ( This is enabled only when role based stratergy is enabled)
+
+        Manage Roles to create the roles and
+
+        Assign Roles to assign the roles to the users.
+
+Step 6 : Validate authorization and authentication are working properly
+
+
+
+
+
+
+Jenkins Beginner Tutorial 7 - Getting started with JOBS
+============================================
+
+Today we will learn:
+———————————
+1. How to create a basic JOB in Jenkins
+2. Basic job configurations
+2. How to run the Job remotely
+4. How to chain Job Execution
+
+
+Step 1 : Jenkins - New Item - add details
+
+Step 2 : How to trigger the job remotely
+
+Step 3 : How to chain job executions
+        Build Triggers/Post Build Actions
+
+
+
+Jenkins Beginner Tutorial 8 - Jenkins integration with GIT (SCM)
+===================================================
+
+Today we will learn
+———————————
+1. Create a java program and run it through command line
+2. Create a Jenkins job to run the java program
+3. Add this program/project to Git
+4. Jenkins - add git plugin
+5. Configure Jenkins job to trigger the execution when a change is pushed to GitHub
+__________________________________________________________
+
+Step 1 : Create a java program
+
+Step 2 : Compile from command line
+   javac “name of .java class”
+      java “name of class without extension .java”
+
+Step 3 : Create a Jenkins job to run this program
+
+Step 4 : Add the project to Git and GitHub
+
+For Reference:
+----------------------
+Git and GitHub Beginner Tutorial 1 - Introduction - https://youtu.be/-U-eUHI6euM?list=PLh...
+
+Git and GitHub Beginner Tutorial 2 - Getting started - Install Git (mac) - https://youtu.be/0Icla6TVNNo?list=PLh...
+
+Git and GitHub Beginner Tutorial 3 - Getting started - Install Git windows - https://youtu.be/sBTAkHOxvOk?list=PLh...
+
+Step 5 : Configure Jenkins job to trigger build on Git commit
+
+
+
+
+Note : catLight is the Monitoring tool for Jenkin Jobs.
+
