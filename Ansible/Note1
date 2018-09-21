@@ -1,0 +1,206 @@
+What is Ansible?
+=================
+    Ansible is a configuration Management, Deployment and Orchestration tool.
+    It automates entire IT infrastructure by providing large productivity gains.
+
+
+Features of Ansible:
+====================
+    Simple:
+        Simple to install and setup. very easy to learn.
+
+    Agentless:
+        No nees of any agent or client software to manage the nodes.
+
+    Powerful:
+        Capability to model complex IT infrastructure workflows and orchestrate entire IT infrastructure.
+
+    Efficient/platform Independent:
+        Extensibles with modules written in any programming language/ programming language independent.
+
+
+Ansible Case Study : NASA
+==========================
+NASA wants:
+    Better agility
+    Save costs
+    More Security
+
+
+Ansible Architecture:
+=====================
+
+    CMDB - Configuration Management Database which contains all the configurations related to the setup. It will be either store in cloud/server.
+
+    Playbook - Contains Modules,APIs and plugins.
+
+    Inventory - contains list IP address of all machines.
+
+    Playbook:
+
+        Describes entire workflow of the system.
+
+        Modules - core files /tasks. Ansible comes with inbuilt modules later we can customize it.
+
+        APIs - Python API
+
+        Plugins - eg: call back ,connection, action plugins are handy plugins.
+
+
+
+    |------------------------------------------------------------------|         |-------|
+    |    ANSIBLE AUTOMSTION ENGINE                                     |  <----- |CMDB   |
+    |                                                                  |         |-------|
+    |              |-------------------------------------------|       |
+    |              |                                           |       |
+    |              |  Modules    +    APIs   +   Plugins       |       |
+    |Inventory <-> |                                           |       |
+    |              |                                           |       |
+    |              |  PLAYBOOK                                 |       |
+    |              |-------------------------------------------|       |
+    |                                                                  |----->Hosts
+    |                                                                  |
+    |------------------------------------------------------------------|
+
+
+
+
+Let's Write a Playbook:
+=======================
+    Playbooks are simple files written in YAML file.
+    It can declare configurations and orchestrate manual ordered process.
+    can launch tasks synchronously or asynchronously.
+
+
+    Example of Ansible Playbook:
+    ============================
+        ---                             # To indicate this is a Ansible playbook file.
+        - hosts: webservers             # on the Hosts which nneds to be ran.
+          tasks:                        # list of tasks
+            -name: install apache2      # name of the task. Here it is "install apache2"
+             apt: name=apache2 update_cache=yes state=latest    # use apt package to install, apache2 is the software needs to be installed. update_cache = yes is to update the apt. state= latest to instal the latest version of apache2
+
+          notify:
+            -restart apache2
+
+          handlers:
+            -name: restart apache2
+             service: name=apache2 state=restarted.
+
+Where Ansible Used for?
+=======================
+    Orchestration       - Platform where server/network/storage united together
+    Provisioning        - Provide something is needed.
+    Application Deployment   - eg : CI-CD tools
+    Configuration Management  - configuring all the servers eg: installing Tomcat on all the hosts.
+    Security Compliance    - Applying customising security policies to all of your servers.
+
+
+
+Hands-on:
+=========
+
+    Step 1: Install Ansible on your Control/Master Machine.
+
+    Step 2:  vi /etc/ansible/hosts    #Host inventory file
+
+    Step 3: Add/Append your Slave hosts entries to hosts file.
+
+            eg:
+                [My Server-01]
+                172.20.249.51
+
+                [My Server-02]
+                172.20.249.52
+
+    Step 4: To list the hosts
+
+            ansible --list-host all # It will lists all the hosts
+
+            ansible --list-host My Server-01  # It will list the IP of the server.
+
+    Step 5: ansible all -m ping    or ansible -m ping 'test-servers' #  To test whether all the slave machines are pingable from controller
+
+            Expected Result at the first time:
+            ===================================
+                Failed to Connect to the host via SSH: Permission denied
+
+            To Resolve this:
+            ================
+                Step 5.1: Generate the rsa public key:
+                          ssh-keygen -t rsa
+
+                          Note: By default , the key will be stored under /root/.ssh/id_rsa
+
+                Step 5.2: Goto /root/.ssh/
+                          It has id_rsa , id_rsa.pub and known_hosts
+
+
+                Step 5.3: Copy id_rsa.pub key to the destination servers:
+
+                          either from scp command or via following commannd:
+
+                          ssh-copy-id <destination server ip address>
+
+
+    Step 6: Run again the following command:
+
+            ansible all -m ping
+
+                Expected Result:
+                =================
+                    ping should be succesful.
+
+
+    Step 7: Playbook to install LAMPSTACK:
+
+            lampstack.yml
+
+            ---
+                name: Install apache & php & mysql
+                hosts: test-servers/My Server 1
+                become: true # activates user previleges
+                become_user: root  # as a root user.
+                gather_facts: true
+                tasks:
+                    - name: Install Apache2
+                      package: name=apache2 state=present
+                    - name: InstallApache2-php5
+                      package: name=libapache2-mod-php state=present
+                    - name: Installing php-cli
+                      package: name= php-cli state=present
+                    - name: Install the Pyhton libraries
+                      pip: name=paramiko
+                    - name: Install linux related pakages
+                      apt: name=python-pip state=present
+                    - name: Copy files
+                      copy: src="/root/index.html" dest=/root/index.html
+
+    Step 8: Run the playbook
+            ansible-playbook lampstack.yml
+
+
+Some more important commmands:
+===============================
+
+    ansible all -m ping
+
+    System 01/Master/Control Machine:
+    ==================================
+        ssh-keygen -t rsa
+
+        ~/.ssh/
+        chmod 700 ~/.ssh
+
+        scp /etc/ansible/hosts <slavehosts IP>:~/
+
+    System 02/ Slave Machine:
+    =========================
+        mv id_rsa.pub /.ssh/authorised_keys
+        chmod 600 ~/.ssh/authorised_keys
+
+
+
+
+
+
