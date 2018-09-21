@@ -11,6 +11,11 @@ Features of Ansible:
     Simple:
         Simple to install and setup. very easy to learn.
 
+    Built on top of Python:
+        provides a lot of Python's functionality
+
+    Uses SSH for secure connections
+
     Agentless:
         No nees of any agent or client software to manage the nodes.
 
@@ -20,7 +25,17 @@ Features of Ansible:
     Efficient/platform Independent:
         Extensibles with modules written in any programming language/ programming language independent.
 
+    It's a push based machanism
 
+
+    Push Based vs Pull Based:
+    =========================
+        Tools like Puppet and chef are pull based
+            * Agents on the server periodically checks for the configuration information from the central server(Master Node)
+
+        Ansible is Push Based
+            * Central server pushes the configuratin information on target servers
+            * You control when changes are made on the servers.
 Ansible Case Study : NASA
 ==========================
 NASA wants:
@@ -73,6 +88,8 @@ Let's Write a Playbook:
     It can declare configurations and orchestrate manual ordered process.
     can launch tasks synchronously or asynchronously.
 
+
+    A playbook contains plays , plays contains tasks and tasks contains modules.
 
     Example of Ansible Playbook:
     ============================
@@ -202,7 +219,29 @@ Some more important commmands:
         chmod 600 ~/.ssh/authorised_keys
 
 
+few concepts:
+=============
+    Host Inventory:
+    ===============
+        * It contains list of your hosts, grouped together.
+        * Default location is /etc/ansible/hosts
 
 
+    Ansible Modules:
+    ================
+        * Modules(are also referred as task plugins or library plugins) are the ones which actually get executes inside a playbook.
+        * These are the scripts that come packages with Ansible and perform some kind of actions on the host.
 
+        Example:
+        ========
+            * apt:
+                Installs or removes packages using the apt package manager.
 
+            * copy:
+                copies files from local machine to remote machine.
+
+            * file:
+                sets the attribute of a file, symlink or directory.
+
+            * service:
+                startrs,stops or retarts a service.
