@@ -1,0 +1,15 @@
+After Git Install:
+===================
+
+First Time Setup:
+=================
+    1. Check Version:
+    =================
+        git --version
+
+    2. Set Config Values:
+    =====================
+        git config --global user.name "Dayananda D R"
+        git config --global user.email "dayananda30@gmail.com"
+
+        git config --list

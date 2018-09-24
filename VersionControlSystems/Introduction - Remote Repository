@@ -1,0 +1,95 @@
+1. Cloning a remote repo:
+=========================
+    git clone <url> <where to clone>
+
+2. Viewing information about the remote repository:
+===================================================
+    git remote -v:
+        lists the information of the repository
+
+    git branch -a:
+        lists all the branches
+
+3. git diff:
+============
+    tells the changes you have made
+
+4. git add and git commit:
+===========================
+
+
+Before pushing the code to remote repository:
+==============================================
+    Note:
+        git pull origin master
+
+then
+
+    git push origin master
+
+
+    origin is the name of the repository and
+    master is the branch
+
+
+Common Recommended Workflow:
+============================
+    1. Create a branch for a desired feature:
+    =========================================
+        git branch example-branch
+            creates the branch
+
+        git checkout example-branch
+            changes the master branch to example-branch
+
+        Shortcut to above 2 steps is:
+        =============================
+            git checkout -b example-branch
+
+
+    2. Do the changes on the branch locally:
+    =========================================
+
+    3. git add and and commit:
+    ==========================
+
+    4. After Commit , push branch to remote:
+    =========================================
+        git push -u origin example-branch
+
+        u --> tells to associate the local specified branch with the master branch
+
+    5. Merging the branches:
+    ========================
+        git checkout master
+
+        git pull origin master
+
+        git branch --merged
+
+
+        git merge <name of the branch>
+        git merge example-branch
+
+        git push origin master
+
+
+
+    6. Deleting a branch:
+    =====================
+        To delete a local branch:
+        ==========================
+            git branch -d <name of the branch to be deleted>
+            git branch -d example-branch
+
+        To delete a remote branch:
+        ==========================
+            git push origin --delete <branch name to be deleted>
+
+
+
+
+
+
+
+
