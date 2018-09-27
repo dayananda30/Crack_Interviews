@@ -1,0 +1,108 @@
+
+subprocess  -  Subprocess Management :
+======================================
+
+    The Subprocess module allows you to spawn new processes, connect to their input/output/error pipes and obtain their return codes.
+    This module intends to replace sever older modules and functions such as
+        * os.system
+        * os.spawn
+        * os.popen
+        * popen2.*
+        * commands.*
+
+
+Using the subprocess Module:
+============================
+    1. subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False):
+    ===============================================================================
+        Example:
+            subprocess.call(["ls", "-l"])
+            Output: 0
+
+            subprocess.call("exit 1", shell=True)
+            Output: 1
+
+        Warning: shell=True can be a security hazard.
+
+        Note: Do not use stdout=PIPE or stderr=PIPE with this function as that can deadlock based on the
+              child process output voulme.
+
+              Use Popen with the communicate() methos when you need pipes.
+
+
+
+    2. subprocess.check_call(args, *, stdin=None, stdout=None, stderr=None, shell=False):
+    =====================================================================================
+        Returns 0 during successful execution otherwise raises CalledProcessError which will have return code.
+
+        Example:
+            subprocess.check_call(["ls","-al"])
+            Output : 0
+
+            subprocess.check_call("exit 1",shell=True)
+            Output : subprocess.CalledProcessError: Command 'exit 1' returnrf non zero exit status 1
+
+
+
+    3. popen Objects:
+    =================
+        output=`dmesg | grep hda`
+
+        after introduction of pipelines and process management becomes
+
+        p1 = subprocess.Popen(["dmesg"], stdout=PIPE)   // p1 is the process and stdout is PIPELINE to next process
+        p2 = subprocess.Popen(["grep", "hda"], stdin=p1.stdout, stdout=PIPE)
+        p1.stdout.close()  # Allow p1 to receive a SIGPIPE if p2 exits.
+        output = p2.communicate()[0]
+
+        Note: The p1.stdout.close() call after starting the p2 is important in order for
+              p1 to receive a SIGPIPE if p2 exits before p1.
+
+
+        Alternatively:
+
+        command = "dmesg | grep hda"
+        output = subprocess.check_output("dmesg | grep hda", shell=True)
+
+
+
+        Realistic Example:
+        ==================
+        try:
+            retcode = subprocess.call("mycmd" + "myarg", shell=True)
+            if retcode < 0:
+                print >>sys.stderr, "Child was terminated by signal", -retcode
+            else:
+                print >>sys.stderr, "Child returned", retcode
+
+        except OSError as e:
+            print >>sys.stderr, "Execution failed",e
+
+
+
+
+
+
+When to use What?
+==================
+
+    1. When you're working on processes and one process output dependent on another process input.
+       In those scenarios, we should opt for subprocess.Popen() module.
+
+    2. When you're working on commands output and want to operate on those outputs.
+       In those scenarios, we should opt for subprocess.check_output() module.
+
+    3. When you're most concern about the command execution status/ return code than its output.
+       In those scenarios, we should opt for subprocess.call() module.
+
+
+
+
+
+
+
+
+
+
+
+
