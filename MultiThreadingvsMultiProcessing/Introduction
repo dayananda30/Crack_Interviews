@@ -1,0 +1,20 @@
+MultiProcessing:
+================
+    * Heavy weight
+    * It has its own dedicated address space, stack and heap memory.
+    * Two processes can talk to each other via IPC calls such file, shared memory and PIPE.
+    * Any memory leak in one process will not effect other process since they are isolates from one another.
+
+
+
+MultiThreading:
+===============
+    * Light weight
+    * Address space is shared by all the threads inside a process.
+    * Each thread has its own stack (different instructions needs to be executed.)
+    * But all the threads will have same heap memory (global varibales.)
+
+
+
+URL:
+https://www.youtube.com/watch?v=uWbSc84he2Q&index=3&list=PLeo1K3hjS3uub3PRhdoCTY8BxMKSW7RjN
