@@ -1,0 +1,21 @@
+URL: https://www.geeksforgeeks.org/xml-parsing-python/
+
+
+XML Parsing in Python:
+======================
+* XML stands for eXtensible Markup Language.
+* It was designed to store and transport data.
+* It is designed for both human and machine readable.
+* The XML file to ne parsed in this tutorial is a RSS feed.
+
+RSS:
+====
+* Rich Site Summary or Really Simple Syndication.
+* Uses a family of standard web feed formats to publish frequenly updated information like blog, news etc.
+
+
+
+Python Module used : ElementTree XML API.
+
+
+

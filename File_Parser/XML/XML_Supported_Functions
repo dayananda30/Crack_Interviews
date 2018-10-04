@@ -1,0 +1,11 @@
+XML Supported Functions:
+=========================
+xml.etree.ElementTree.fromstring(text)
+    Parses an XML section from a string constant. Returns an Element instance as the root.
+
+xml.etree.ElementTree.iselement(element)
+    returns True if it's a valid xml element.
+
+xml.etree.ElementTree.parse(source)
+    parses an XML file and retuns an ElementTree instance.
+
