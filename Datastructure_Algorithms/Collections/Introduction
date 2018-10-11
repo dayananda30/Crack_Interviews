@@ -1,0 +1,6 @@
+The module Collections has following features:
+    *   namedtuple()
+    *   dequeue()
+    *   Counter()
+    *   OrderedDict()
+    *   defaultdict()
