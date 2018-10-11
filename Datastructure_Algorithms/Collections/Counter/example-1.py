@@ -1,6 +1,5 @@
 # Tally(Total) occurrences of words in a list
 
-
 from collections import Counter
 
 cnt = Counter()
