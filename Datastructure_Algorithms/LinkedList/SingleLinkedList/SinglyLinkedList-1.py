@@ -6,6 +6,12 @@
 # Print Nodes
 
 
+
+"""
+Creating Nodes , LinkedLists and adding the Nodes to the Linked at the END. and displaying all the Node's Data
+
+
+"""
 class Node:
     def __init__(self,data):
         self.data = data
