@@ -30,6 +30,7 @@ class LinkedList:
         temp = self.head
         self.head = newNode
         self.head.next = temp
+        del temp
 
 
     def printNodes(self):
