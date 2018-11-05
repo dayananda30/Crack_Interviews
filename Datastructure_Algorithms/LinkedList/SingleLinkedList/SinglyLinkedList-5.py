@@ -22,20 +22,31 @@ class LinkedList:
 
 
     def mergeLinkedLists(self, LinkedList1, LinkedList2):
-        self.LinkedList1 = LinkedList1
-        self.LinkedList2 = LinkedList2
+        self.currentNode1 = LinkedList1.head
+        self.currentNode2 = LinkedList2.head
 
-        print(self.LinkedList1.head.data)
-        print(self.LinkedList2.head.data)
+        while True:
 
+            if self.currentNode1 is None:
+                mergeList.insertAtEnd(self.currentNode2)
+                break
 
-        currentNode1 = LinkedList1.head
-        currentNode2 = LinkedList2.head
+            if self.currentNode2 is None:
+                mergeList.insertAtEnd(self.currentNode1)
+                break
 
-        MergedLinkedList = LinkedList()
+            if self.currentNode1.data < self.currentNode2.data:
+                curFirstNext = self.currentNode1.next
+                self.currentNode1.next = None
+                mergeList.insertAtEnd(self.currentNode1)
+                self.currentNode1 = curFirstNext
 
-        while currentNode1 is not None and currentNode2 is not None:
-            
+            else:
+                curSecondNext = not self.currentNode2.next
+                self.currentNode2.next = None
+                mergeList.insertAtEnd(self.currentNode2)
+                self.currentNode2 = curSecondNext
+
 
     def printNodes(self):
         cur = self.head
@@ -63,9 +74,12 @@ if __name__ == '__main__':
     thirdNode = Node("9")
     linkedlist2.insertAtEnd(thirdNode)
     linkedlist2.printNodes()
+    print "##########"
 
 
-    res = LinkedList()
-    res.mergeLinkedLists(linkedlist1,linkedlist2)
+    mergeList = LinkedList()
+    mergeList.mergeLinkedLists(linkedlist1,linkedlist2)
+
+    mergeList.printNodes()
 
 

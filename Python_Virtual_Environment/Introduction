@@ -1,0 +1,42 @@
+Python Virtual Environment:
+===========================
+Python Virtual Environemnt is a tools which helps in isolating dependencies of two projects in a two virtual env.
+
+
+Why do we need Virtual Env:
+===========================
+Imagine a scenario, where you are working on two web based python projects and one of them uses a Django 1.9 and
+the other uses Django 1.10 and so on. In such situations virtual environment can be really useful to maintain
+dependencies of both the projects.
+
+
+When and Where to Use Virtual Env:
+==================================
+By default,every project on your system will use these same directories to store and retrieve site packages(third party libraries).
+Let's say you're working on two projects, you have two versions of Django.
+This is a real problem for Python since it can’t differentiate between versions in the “site-packages” directory.
+So both v1.9 and v1.10 would reside in the same directory with the same name.
+
+This is where virtual environments come into play.
+To solve this problem, we just need to create two separate virtual environments for both the projects.
+The great thing about this is that there are no limits to the number of environments you can have
+since they’re just directories containing a few scripts.
+
+
+Steps :
+=======
+Step 1 : Install Python
+
+Step 2 : Install pip and distribute as an administrator
+
+    C:\Users\user\Desktop> python distribute_setup.py
+    C:\Users\user\Desktop> python get-pip.py
+
+Step 3:  pip install virtualenv
+
+Go to any directory of your choice:
+
+Step 4:  virtualenv <Name of the Virtual Env>
+
+Step 5 : Activate the virtual env:
+        <Name of the Virtul ENV>/Scripts/Activate  ---> It creates a new pip env with ony pip and Distribute libraries installed in that env.

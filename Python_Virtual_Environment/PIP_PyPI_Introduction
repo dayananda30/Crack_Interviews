@@ -1,0 +1,11 @@
+PIP:
+===
+
+Pip is a python package manager.
+It is OS independent
+Pip connects to PyPI to download python related third party packages.
+
+PyPI:
+====
+
+Python Package Index
