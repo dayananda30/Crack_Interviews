@@ -23,7 +23,7 @@ handles = driver.window_handles
 numofWindowHandles = len(handles)
 print("The list of Window Handles : {}:".format(driver.window_handles))
 
-#If you want to switch the handle
+#If you want to switch the handlesqe
 for handle in range(numofWindowHandles):
     driver.switch_to_window(handles[handle])
     print('The Title of the Windows is : {}'.format(driver.title))
