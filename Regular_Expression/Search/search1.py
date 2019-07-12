@@ -1,3 +1,7 @@
+'''
+Search will start searching for the patern in between the string/line 
+'''
+
 import re
 string = "This is a simple sentence 31-08-1990 BVJPR1810 10.228.223.234"
 
