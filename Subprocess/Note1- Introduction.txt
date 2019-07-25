@@ -11,6 +11,9 @@ subprocess  -  Subprocess Management :
         * commands.*
 
 
+Sub process uses executable from here - os.environ['COMSPEC']
+Normally os.environ['COMSPEC'] contains command line interface
+
 Using the subprocess Module:
 ============================
     1. subprocess.call(args, *, stdin=None, stdout=None, stderr=None, shell=False):
@@ -41,8 +44,9 @@ Using the subprocess Module:
 
             subprocess.check_call("exit 1",shell=True)
             Output : subprocess.CalledProcessError: Command 'exit 1' returnrf non zero exit status 1
-
-
+            
+            
+            
 
     3. popen Objects:
     =================
@@ -79,10 +83,6 @@ Using the subprocess Module:
             print >>sys.stderr, "Execution failed",e
 
 
-
-
-
-
 When to use What?
 ==================
 
@@ -96,13 +96,5 @@ When to use What?
        In those scenarios, we should opt for subprocess.call() module.
 
 
-
-
-
-
-
-
-
-
-
-
+extra links :
+https://stackoverflow.com/questions/24822217/could-not-understand-how-stdin-and-stdout-in-popen-fucntion-works-in-python
