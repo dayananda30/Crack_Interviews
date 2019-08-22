@@ -1,0 +1,6 @@
+URL  : https://www.youtube.com/watch?v=KQzv8coI4y0
+===================================================
+
+In this I have written modules for Create table , Insert Data into a table, delete a record from a table, delete table and update the row using sqlite3
+I have also covered Foreign key concept implemented via sqlite3
+

@@ -1,7 +1,7 @@
-def display(**kwargs):
-    if kwargs.keys() is not None:
-        for key in kwargs.keys():
-            print("{} ==> {} ".format(key,kwargs[key]))
+def display(**kwarg):
+    if kwarg.keys() is not None:
+        for key in kwarg.keys():
+            print("{} ==> {} ".format(key,kwarg[key]))
 
 
 

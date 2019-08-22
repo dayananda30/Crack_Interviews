@@ -1,0 +1,10 @@
+WHERE CLAUSE:
+=============
+SELECT query to retrieve data from the tables.
+
+Different ways to get data using WHERE CLAUSE:
+WHERE column_1 = 100;
+WHERE column_2 IN (1,2,3);
+WHERE column_3 LIKE 'An%';
+WHERE column_4 BETWEEN 10 AND 20;
+

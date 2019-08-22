@@ -44,9 +44,8 @@ Using the subprocess Module:
 
             subprocess.check_call("exit 1",shell=True)
             Output : subprocess.CalledProcessError: Command 'exit 1' returnrf non zero exit status 1
-            
-            
-            
+
+
 
     3. popen Objects:
     =================
@@ -83,6 +82,10 @@ Using the subprocess Module:
             print >>sys.stderr, "Execution failed",e
 
 
+
+
+
+
 When to use What?
 ==================
 
@@ -96,5 +99,14 @@ When to use What?
        In those scenarios, we should opt for subprocess.call() module.
 
 
+
 extra links :
 https://stackoverflow.com/questions/24822217/could-not-understand-how-stdin-and-stdout-in-popen-fucntion-works-in-python
+
+
+
+
+
+
+
+

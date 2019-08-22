@@ -1,0 +1,20 @@
+SELECT QUERY:
+=============
+SELECT query to retrieve data from the tables.
+
+Different ways to get data using different clauses are :
+1. Select all the Data
+    SELECT * FROM <TABLENAME>
+2. Select selective column data
+    SELECT <COLUMN1>, <COLUMN2> FROM <TABLENAME>
+3. Select data with in the range
+    SELECT * FROM <TABLENAME> LIMIT <count> OFFSET <offset>
+4. Select data from either ASC or DESC order
+    SELECT * FROM <TABLENAME> ORDEY BY <COLUMN NAME>
+    SELECT * FROM <TABLENAME> ORDEY BY <COLUMN NAME> ASC/DESC
+    SELECT * FROM <TABLENAME> ORDEY BY <COLUMN1> ASC, <COLUMN2> DESC
+5   Get only selective column data using WHERE clause
+    SELECT * FROM <TABLENAME> WHERE <COLUMNNAME> =<VALUE>
+6   Select Distint row values from the result
+    SELECT DISTINCT <COLUMNNAME> FROM <TABLENAME>
+

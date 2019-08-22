@@ -1,0 +1,6 @@
+Special Characters:
+====================
+'.'     :   This matches any character except a newline. If DOTALL flag has been enabled, this matches any characters
+            including a newline.
+
+'^'

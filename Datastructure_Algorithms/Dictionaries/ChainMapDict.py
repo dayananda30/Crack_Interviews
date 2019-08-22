@@ -7,7 +7,7 @@ i.e performs will not effect to the existing dict.
 '''
 
 
-from collections import ChainMap
+from collections import C
 dict1 = {'one':1,'two':2}
 dict2 = {'three':3,'four':4}
 chain = ChainMap(dict1,dict2)
