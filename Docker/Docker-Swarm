@@ -1,0 +1,42 @@
+Docker Swarm:
+  The cluster management and orchestrator features are embedded in the Docker engine are built using swamrm kit.
+  Swarm kit is a seperate project which implements Docker's orchestration layer which is used directly by Docker engine.
+  
+  
+Swarm Kit:
+  A took kit for orchestrating distributed env at any scale. which includes node discovery, raft-based consensus, task scheduling and more.
+
+Main benefits of swarm kit are :
+  Distributed : Swarm kit uses Raft consesus algorithm in order to co-ordinate and doesnot rely on a single point of failure to perform decisions.
+  Secure : Swarm kit uses mutual TLS for node authentication, role authorization and transport encryption.
+  Simple : It doesnot need external database to operate.
+  
+  Swarm Overview:
+    Machine runing Swarmkit can be grouped together in order to form a Swarm, coordinating tasks with each other.
+    Once a machine joins, it becomes a swarm node. Nodes can be either Manager node or Worker node.
+    
+  Worker Node:
+    Worker node is responsible for runing tasks using an exceutor. Swarm comes with a default Docker container executor.
+    
+  Manager Node:
+    Mnager node accept specifications from the user and passing on to worker nodes.
+    
+  Tasks are organised in Services. A Service is a higher level abstraction that allows the user to declare the desired state of a group of taks.
+  
+  Some main features of Swarm kit:
+    1. If a node fails, Swarm kit reschedules its tasks onto a different node.
+    2. Service types:
+      2.1 : Global service:
+        run one task on every available node in the cluster.
+      2.2 : Replicated service:
+        are scaled to the desired number of replicas.
+    3. Scheduling:
+      3.1 : Resource awareness: 
+        Swarm Kit is aware of all node resources and places tasks accordingly.
+      3.2 : Constraints :
+        Operator/User can limit the set of nodes where a task can run by defining the constraint.
+        
+        ex:
+        node.id, node.hostname, node.ip, node.role, node.platform.arch, node.labels, engine.labels.
+        
+        
