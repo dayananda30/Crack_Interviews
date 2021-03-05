@@ -1,0 +1,3 @@
+[submodule "coding-interview-university"]
+	path = coding-interview-university
+	url = https://github.com/dayananda30/coding-interview-university.git
