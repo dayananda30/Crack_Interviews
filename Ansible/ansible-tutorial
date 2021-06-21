@@ -1,0 +1,44 @@
+1. cat /etc/ansible/inventory
+2. cat /etc/ansible/hosts
+3. ansible-inventory -i <name of the inventory> --list
+4. ansible --version
+5. ansible workers -m ping
+6. ansible all -i inventory -m ping
+7. ansible-config dump
+8. ansible-config dump --only-changed
+9. ansible all -m group -a "name=test"
+10.ansible all -m user -a "name=user1 group=test"
+11. ansible all -m user -a "name=user1 group=test state=absent"
+12. ansible all -m package -a "name=httpd state=present"
+13. ansible-playbook -C user-exists.yml --> Dry run
+14. ansible-playbook user-exists.yml
+15. ansible-playbook user-exists.yml --limit host1
+16. ansible-playbook -C user-exists.yml --limit 10.193.231.212
+
+
+---
+- name: Converted adhoc command example
+  hosts: all
+  become: yes
+  tasks:
+    - name: user exists with UID 4000
+      user:
+        name: test
+        uid: 4000
+        state: present
+
+
+---
+- name: Install packages
+  hosts: all
+  become: true
+  vars:
+          packages:
+                  - nmap
+                  - php
+                  - vim
+  tasks:
+          - name: Install software
+            apt:
+                    name: "{{ packages }}"
+                    state: present
