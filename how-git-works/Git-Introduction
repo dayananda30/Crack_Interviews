@@ -1,0 +1,70 @@
+GIT:
+====
+    git is a versioning tool.
+    git is a content tracker.
+    git is a persistent map which stores commit and its hashes as key and value.
+
+How Git is a map:
+==================
+    Git tries to encrypt each and every data using SHA1 algorithm and stores as data objects.
+
+    To get hash for a content :
+    echo "Dayananda" | git hash-object --stdin
+    output : 7616f03dd58f9ce54e040d5dbedb582edf47f48c
+
+    To decrypt the content:
+    git cat-file <hash> -p
+    git cat-file -p 7616f03dd58f9ce54e040d5dbedb582edf47f48c
+    output : Dayananda
+
+    To get the type of the object:
+    git cat-file -t <hash>
+    output : blob/tree/tag (depending on the type of the object)
+
+
+    Each object in git has its own SHA1.
+    What if they collide? same hash ?
+    SHA1 are unique.
+
+    How git stores hash values persistently?
+        Git is a persistent map and key are the hashes
+        echo "Dayananda" | git hash-object --stdin -w
+        -w for writing in to a git repository
+
+        ls .git/objects/  --> stores hash values under object directory
+        first 2 digits as folder name and rest other digits as object.
+
+        git count-objects --> Gives total number of data objects.
+
+Initializing new repository:
+=============================
+    git init --> Initialized empty git repository.
+    git branch -m master --> Making master as default branch.
+
+Merge vs Rebase:
+================
+    When in doubt, go with merge
+    Merge never lies and it keeps all the history as is whereas rebase do lot of activities
+    and creates new commit which is not part of our commit but rebase makes linear commits.
+
+Annotated tag vs light weight tag:
+==================================
+    Light weight tag doesn't need extra object to hold metadata information about the tag
+
+git show-ref master:
+====================
+    tells local master pointing to which commit and
+    remote master branch pointing to which commit?
+    example:
+    $ git show-ref git-working
+    718c5c8efc0743f854d984255e659ec6b9edea40 refs/heads/git-working --> local
+    718c5c8efc0743f854d984255e659ec6b9edea40 refs/remotes/origin/git-working --> remote branch
+
+
+
+
+
+
+
+
+
