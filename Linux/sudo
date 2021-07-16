@@ -1,0 +1,3 @@
+To Execute any command as root user:
+======================================
+sudo sh -c "<cmd>"
