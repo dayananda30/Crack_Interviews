@@ -1,0 +1,23 @@
+"""
+One Way:
+if <condition>; then
+    //Code to be executed when condition is met
+else
+    //Code to beb executed when condition is not met
+fi
+"""
+
+"""
+Another Way
+if <condition>
+then
+    //Code to be executed when condition is met
+else
+    //Code to beb executed when condition is not met
+fi
+"""
+
+"""
+Single line
+if <condition>; then //Code when condition is met; else //Code when condition is not met; fi
+"""
