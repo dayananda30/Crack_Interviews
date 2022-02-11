@@ -3,4 +3,4 @@
 if [[ -d $directory_name ]]
 then
   echo "Directory Exists"
-fi 
+fi
