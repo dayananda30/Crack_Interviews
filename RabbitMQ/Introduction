@@ -1,0 +1,14 @@
+https://www.rabbitmq.com/getstarted.html
+
+
+Steps to Install RabbitMQ:
+https://computingforgeeks.com/how-to-install-latest-rabbitmq-server-on-ubuntu-linux/
+
+
+"""
+ERROR : NOT_ALLOWED - access to vhost ‘/‘ refused for user admin
+SOLUTION:
+rabbitmqctl delete_vhost next
+rabbitmqctl add_vhost /
+rabbitmqctl set_permissions -p / admin '.*' '.*' '.*'
+"""

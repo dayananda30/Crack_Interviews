@@ -85,9 +85,3 @@ Common Recommended Workflow:
         To delete a remote branch:
         ==========================
             git push origin --delete <branch name to be deleted>
-
-
-
-
-
-
