@@ -12,3 +12,5 @@ rabbitmqctl delete_vhost next
 rabbitmqctl add_vhost /
 rabbitmqctl set_permissions -p / admin '.*' '.*' '.*'
 """
+
+http://<IP Address>:15672 --> management portal

@@ -25,7 +25,7 @@ print(" [x] sent 'Hello Daya'")
 
 # Close all conenctions
 
-for item in range(50):
+for item in range(500):
     item = "Item - {}".format(item)
     channel.basic_publish(exchange='',
                           routing_key='nanda',
