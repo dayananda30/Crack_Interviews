@@ -1,0 +1,14 @@
+"""
+targets: prerequisites
+	command
+	command
+	command
+prerequisites:
+    command
+"""
+second_file:first_file
+        echo "Running Second and creating second_file"
+        touch second_file
+first_file:
+        echo "Running First and creating first_file"
+        touch first_file

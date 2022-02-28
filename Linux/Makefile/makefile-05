@@ -1,0 +1,14 @@
+"""
+Making multiple targets and you want all of them to run? Make an all target.
+"""
+all: one two three
+
+one:
+	touch one
+two:
+	touch two
+three:
+	touch three
+
+clean:
+	rm -f one two three

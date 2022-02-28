@@ -1,0 +1,8 @@
+"""
+Reference variables using either ${} or $()
+"""
+
+name := daya
+
+print:
+    echo ${daya}
