@@ -1,0 +1,71 @@
+𝐁𝐀𝐒𝐈𝐂𝐒
+1. 𝐠𝐢𝐭 𝐢𝐧𝐢𝐭 <𝐝𝐢𝐫𝐞𝐜𝐭𝐨𝐫𝐲>
+Create empty Git repo in the specific directory
+
+2. 𝐠𝐢𝐭 𝐜𝐥𝐨𝐧𝐞 <𝐫𝐞𝐩𝐨>
+Clone repo located at the <repo> defined. Can be either local or removed via HTTP or SSH
+
+3. 𝐠𝐢𝐭 𝐜𝐨𝐧𝐟𝐢𝐠 𝐮𝐬𝐞𝐫.𝐧𝐚𝐦𝐞 <𝐧𝐚𝐦𝐞>
+Author name that would be used for all commits in the current repo
+
+4. 𝐠𝐢𝐭 𝐚𝐝𝐝 <𝐝𝐢𝐫𝐞𝐜𝐭𝐨𝐫𝐲>/<𝐟𝐢𝐥𝐞>
+Adds the directory/file on your next commit
+
+5. 𝐠𝐢𝐭 𝐜𝐨𝐦𝐦𝐢𝐭 -𝐦 "<𝐦𝐞𝐬𝐬𝐚𝐠𝐞>"
+Commits your staged content as the new commit snapshot with a message
+
+6. 𝐠𝐢𝐭 𝐬𝐭𝐚𝐭𝐮𝐬
+Shows modified files in the working directory
+
+7. 𝐠𝐢𝐭 𝐥𝐨𝐠
+Shows all commits in the current branch's history
+
+8. 𝐠𝐢𝐭 𝐝𝐢𝐟𝐟
+Shows the difference of what's changed but not staged
+
+𝐔𝐍𝐃𝐎𝐈𝐍𝐆 𝐂𝐇𝐀𝐍𝐆𝐄𝐒
+1. 𝐠𝐢𝐭 𝐫𝐞𝐯𝐞𝐫𝐭 <𝐜𝐨𝐦𝐦𝐢𝐭>
+Undoes all the changes made in <commit> then apply it to the
+the current branch
+
+2. 𝐠𝐢𝐭 𝐫𝐞𝐬𝐞𝐭 <𝐟𝐢𝐥𝐞>
+Removes the file from the staging area, but leave the working directory unchanged. This unstages a file without overwriting any changes
+
+3. 𝐠𝐢𝐭 𝐜𝐥𝐞𝐚𝐧
+Used to remove the unwanted files from your working directory. Many options to remove the unwanted files i.e., -f, -n, -d, etc.
+
+𝐑𝐄𝐖𝐑𝐈𝐓𝐈𝐍𝐆 𝐆𝐈𝐓 𝐇𝐈𝐒𝐓𝐎𝐑𝐘
+1. 𝐠𝐢𝐭 𝐜𝐨𝐦𝐦𝐢𝐭 --𝐚𝐦𝐞𝐧𝐝
+Replace the last commit with the staged changes and the last commit combined. Use with nothing staged to edit the last commit's message
+
+2. 𝐠𝐢𝐭 𝐫𝐞𝐛𝐚𝐬𝐞 <𝐛𝐚𝐬𝐞>
+Rebase the current branch onto <base>. <base> can be a commit ID, branch name, a tag, or a relative reference to HEAD
+
+3. 𝐠𝐢𝐭 𝐫𝐞𝐟𝐥𝐨𝐠
+Show a log of changes to the local repository's HEAD
+
+𝐆𝐈𝐓 𝐁𝐑𝐀𝐍𝐂𝐇𝐄𝐒
+1. 𝐠𝐢𝐭 𝐛𝐫𝐚𝐧𝐜𝐡
+Lists all of the branches in your repo
+
+2. 𝐠𝐢𝐭 𝐛𝐫𝐚𝐧𝐜𝐡 <𝐛𝐫𝐚𝐧𝐜𝐡-𝐧𝐚𝐦𝐞>
+Create a new branch of the current commit
+
+3. 𝐠𝐢𝐭 𝐜𝐡𝐞𝐜𝐤𝐨𝐮𝐭
+Switch to another branch and check it out into your working directory
+
+4. 𝐠𝐢𝐭 𝐦𝐞𝐫𝐠𝐞 <𝐛𝐫𝐚𝐧𝐜𝐡>
+Merge the specified branch's history into the current one
+
+𝐑𝐄𝐌𝐎𝐓𝐄 𝐑𝐄𝐏𝐎𝐒𝐈𝐓𝐎𝐑𝐈𝐄𝐒
+1. 𝐠𝐢𝐭 𝐫𝐞𝐦𝐨𝐭𝐞 𝐚𝐝𝐝 <𝐧𝐚𝐦𝐞> <𝐮𝐫𝐥>
+Create a new connection to a remote repo. After adding a remote, you can use <name> as a shortcut for <url> in other commands
+
+2. 𝐠𝐢𝐭 𝐟𝐞𝐭𝐜𝐡 <𝐫𝐞𝐦𝐨𝐭𝐞> <𝐛𝐫𝐚𝐧𝐜𝐡>
+Fetches a specific <branch>, from the repo. Leave off <branch> to fetch all remote refs
+
+3. 𝐠𝐢𝐭 𝐩𝐮𝐥𝐥 <𝐫𝐞𝐦𝐨𝐭𝐞>
+Fetch the specified remote's copy of the current branch and immediately merge it into the local copy
+
+4. 𝐠𝐢𝐭 𝐩𝐮𝐬𝐡 <𝐫𝐞𝐦𝐨𝐭𝐞> <𝐛𝐫𝐚𝐧𝐜𝐡>
+Push the branch to <remote>, along with necessary commits and objects. Creates named branch in the remote repo if it doesn't exist

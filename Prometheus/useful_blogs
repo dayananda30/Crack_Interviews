@@ -1,0 +1,8 @@
+1. Installation of Node Exporter
+URL: https://blog.cloudthat.com/learn-installation-of-node-exporter-on-a-linux-server/#:~:text=Node%20Exporter%20is%20a%20Prometheus,disk%20space%2C%20and%20CPU%20utilization.
+
+2. Installation of Prometheus
+URL: https://linuxhint.com/install_prometheus_ubuntu/
+
+3. Installation of both Node Exporter and Prometheus
+URL: https://prometheus.io/docs/prometheus/latest/getting_started/#:~:text=Prometheus%20collects%20metrics%20from%20targets,and%20monitor%20its%20own%20health.
