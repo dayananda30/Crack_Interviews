@@ -6,3 +6,6 @@ URL: https://linuxhint.com/install_prometheus_ubuntu/
 
 3. Installation of both Node Exporter and Prometheus
 URL: https://prometheus.io/docs/prometheus/latest/getting_started/#:~:text=Prometheus%20collects%20metrics%20from%20targets,and%20monitor%20its%20own%20health.
+
+4. Graphs related queries
+URL: https://nsrc.org/workshops/2021/sanog37/nmm/netmgmt/en/prometheus/ex-node-exporter.htm
