@@ -1,7 +1,9 @@
 #import itertools
 
 
-print("The islice() function returns an iterator which returns selected items from the input iterator, by index. It takes the same arguments as the slice operator for lists: start, stop, and step. The start and step arguments are optional.")
+print("The islice() function returns an iterator which returns selected items from the input iterator, by index. It "
+      "takes the same arguments as the slice operator for lists: start, stop, and step. The start and step arguments "
+      "are optional.")
 
 
 from itertools import *
