@@ -59,3 +59,21 @@ BaseException
  └── UnicodeError # Raised when encoding/decoding strings to/from bytes fails.
 
 """
+
+num = 100
+try:
+    out = 100/0
+except ZeroDivisionError as e:
+    print("'{}' Exception Occured while performing division operation".format(e))
+
+
+# Raising Exceptions
+try:
+    raise NameError("Custom Exception")
+except NameError as e:
+    print(e)
+
+"""
+Built - In Exceptions
+https://www.geeksforgeeks.org/built-exceptions-python/
+"""
