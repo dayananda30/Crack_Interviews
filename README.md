@@ -4,9 +4,6 @@
 - I have covered most of Python related topics here.  
 
 
-![](https://pandao.github.io/editor.md/examples/images/4.jpg)
-> Follow your heart.
-
 Table of contents
 =================
 
@@ -111,4 +108,6 @@ how-git-works
 $ Information on How git works.
 ```
 
+![](https://pandao.github.io/editor.md/examples/images/4.jpg)
+> Follow your heart.
 
