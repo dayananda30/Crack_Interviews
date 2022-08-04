@@ -28,10 +28,87 @@ Ansible
 
 Ansible 
 ```bash
-$ What is Ansible
-$ Its Configuration
-$ Installation and How it works
+$ What is Ansible?
+$ Its Configuration and Installation
+$ How it works and basic commands.
 ```
 
+Comprehensive-Python-Cheatsheet
+============
+
+Comprehensive-Python-Cheatsheet
+```bash
+$ Python cheatsheet contains all the python modules.
+$ Explanation with coding examples
+```
+
+Database
+============
+
+Database
+```bash
+$ SQLITE Python Examples
+$ Will add other databases in future.
+```
+
+Datastructure-Algorithms
+==================
+
+Datastructure-Algorithms
+```bash
+$ Contains Datastructure and Algorithms.
+$ Will add other algms and datastucture implemenation in future.
+```
+Jenkins
+==================
+
+Jenkins
+```bash
+$ Contains information related to Jenkins
+$ Installation and Configuration
+```
+
+Linux
+==================
+
+Linux
+```bash
+$ Contains Datastructure and Algorithms.
+$ Will add other algms and datastucture implemenation in future.
+```
+
+Prometheus
+==================
+
+Prometheus
+```bash
+$ Contains information related to Prometheus
+$ Installation and configuraiton details are also mentioned.
+```
+
+RabbitMQ
+==================
+
+RabbitMQ
+```bash
+$ Contains RabbitMQ related informaiton.
+$ coding examples are alsio present.
+```
+
+Shell-Scripting
+==================
+
+Shell-Scripting
+```bash
+$ Contains basic shell scripting Examples
+```
+
+how-git-works
+==================
+
+how-git-works
+```bash
+$ Information on How git works.
+```
 
 
