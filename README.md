@@ -11,7 +11,7 @@ Table of contents
 =================
 
 <!--ts-->
-   * [Ansible](#[installation](https://github.com/dayananda30/Crack_Interviews/tree/Master/Ansible))
+   * [Ansible](#[installation](#Ansible))
    * [Usage](#usage)
       * [STDIN](#stdin)
       * [Local files](#local-files)
