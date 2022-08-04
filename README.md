@@ -7,41 +7,82 @@
 ![](https://pandao.github.io/editor.md/examples/images/4.jpg)
 > Follow your heart.
 
+Table of contents
+=================
 
-**Table of Contents**
+<!--ts-->
+   * [Ansible](#[installation](https://github.com/dayananda30/Crack_Interviews/tree/Master/Ansible))
+   * [Usage](#usage)
+      * [STDIN](#stdin)
+      * [Local files](#local-files)
+      * [Remote files](#remote-files)
+      * [Multiple files](#multiple-files)
+      * [Combo](#combo)
+      * [Auto insert and update TOC](#auto-insert-and-update-toc)
+      * [GitHub token](#github-token)
+      * [TOC generation with Github Actions](#toc-generation-with-github-actions)
+   * [Tests](#tests)
+   * [Dependency](#dependency)
+   * [Docker](#docker)
+     * [Local](#local)
+     * [Public](#public)
+<!--te-->
+
+
+
+**Table of Content**
 
 [TOCM]
 
 [TOC]
 
 #Ansible
+
 #Comprehensive Python Cheatsheet
+
 #Database
+
 #Datastructure Algorithms
+
 #Jenkins
+
 #Linux
+
 #Prometheus
+
 #RabbitMQ
+
 #Shell-Scripting
+
 #how-git-works
+
 #Ansible [Ansible Basics]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/Ansible "Ansible")
+
 #Comprehensive Python Cheatsheet [Comprehensive Python Cheatsheet]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/Comprehensive%20Python%20Cheatsheet "Comprehensive Python Cheatsheet")
+
 #Database [Database]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/Database "Databse")
+
 #Datastructure Algorithms [Datastructure Algorithms]
-(https://github.com/dayananda30/Crack_Interviews/tree/Master/Datastructure_Algorithms "Databse")
+(https://github.com/dayananda30/Crack_Interviews/tree/Master/Datastructure_Algorithms "Datastructure Algorithms")
+
 #Jenkins [Jenkins]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/Jenkins "Jenkins")
+
 #Linux [Linux]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/Linux "Linux")
+
 #Prometheus [Prometheus]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/Prometheus "Prometheus")
+
 #RabbitMQ [RabbitMQ]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/RabbitMQ "RabbitMQ")
+
 #Shell Scripting 
 [Shell Scripting](https://github.com/dayananda30/Crack_Interviews/tree/Master/Shell-Scripting "Shell Scripting")
+
 #How Git Works [How Git Works]
 (https://github.com/dayananda30/Crack_Interviews/tree/Master/how-git-works "how-git-works")
 
