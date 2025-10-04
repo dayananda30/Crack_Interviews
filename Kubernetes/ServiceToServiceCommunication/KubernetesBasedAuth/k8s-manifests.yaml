@@ -1,0 +1,329 @@
+# Kubernetes Manifests for Service-to-Service Communication with Service Account Authentication
+# This file contains all the necessary Kubernetes resources
+
+---
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: s2s-auth-demo
+  labels:
+    name: s2s-auth-demo
+
+---
+# Service Account for Service A
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: service-a-sa
+  namespace: s2s-auth-demo
+  labels:
+    app: service-a
+    component: authentication
+
+---
+# Service Account for Service B  
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: service-b-sa
+  namespace: s2s-auth-demo
+  labels:
+    app: service-b
+    component: authentication
+
+---
+# ClusterRole for Service A (allows it to validate tokens and access Service B)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: service-a-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services"]
+  verbs: ["get", "list"]
+- apiGroups: ["authentication.k8s.io"]
+  resources: ["tokenreviews"]
+  verbs: ["create"]
+- apiGroups: ["authorization.k8s.io"]
+  resources: ["subjectaccessreviews"]
+  verbs: ["create"]
+
+---
+# ClusterRole for Service B (allows it to validate tokens)
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: service-b-role
+rules:
+- apiGroups: ["authentication.k8s.io"]
+  resources: ["tokenreviews"]
+  verbs: ["create"]
+- apiGroups: ["authorization.k8s.io"]  
+  resources: ["subjectaccessreviews"]
+  verbs: ["create"]
+
+---
+# ClusterRoleBinding for Service A
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: service-a-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: service-a-role
+subjects:
+- kind: ServiceAccount
+  name: service-a-sa
+  namespace: s2s-auth-demo
+
+---
+# ClusterRoleBinding for Service B
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: service-b-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: service-b-role
+subjects:
+- kind: ServiceAccount
+  name: service-b-sa
+  namespace: s2s-auth-demo
+
+---
+# ConfigMap for application configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: s2s-auth-demo
+data:
+  SERVICE_B_URL: "http://service-b:5001"
+  LOG_LEVEL: "INFO"
+  AUTHORIZED_SERVICE_ACCOUNTS: |
+    system:serviceaccount:s2s-auth-demo:service-a-sa
+    system:serviceaccount:s2s-auth-demo:service-b-sa
+
+---
+# Deployment for Service A
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a
+  namespace: s2s-auth-demo
+  labels:
+    app: service-a
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: service-a
+  template:
+    metadata:
+      labels:
+        app: service-a
+        version: v1
+    spec:
+      serviceAccountName: service-a-sa
+      containers:
+      - name: service-a
+        image: service-a:latest  # Replace with your actual image
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: SERVICE_B_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: SERVICE_B_URL
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: LOG_LEVEL
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+            - ALL
+
+---
+# Deployment for Service B
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-b
+  namespace: s2s-auth-demo
+  labels:
+    app: service-b
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: service-b
+  template:
+    metadata:
+      labels:
+        app: service-b
+        version: v1
+    spec:
+      serviceAccountName: service-b-sa
+      containers:
+      - name: service-b
+        image: service-b:latest  # Replace with your actual image
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5001
+          name: http
+        env:
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: LOG_LEVEL
+        - name: AUTHORIZED_SERVICE_ACCOUNTS
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: AUTHORIZED_SERVICE_ACCOUNTS
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 5001
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          runAsUser: 1000
+          capabilities:
+            drop:
+            - ALL
+
+---
+# Service for Service A
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-a
+  namespace: s2s-auth-demo
+  labels:
+    app: service-a
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5000
+    targetPort: 5000
+    name: http
+  selector:
+    app: service-a
+
+---
+# Service for Service B
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-b
+  namespace: s2s-auth-demo
+  labels:
+    app: service-b
+spec:
+  type: ClusterIP
+  ports:
+  - port: 5001
+    targetPort: 5001
+    name: http
+  selector:
+    app: service-b
+
+---
+# NetworkPolicy to control traffic flow
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: service-communication-policy
+  namespace: s2s-auth-demo
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: s2s-auth-demo
+    - podSelector: {}
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: s2s-auth-demo
+    - podSelector: {} 
+  - to: []  # Allow egress to kube-system for DNS
+    ports:
+    - protocol: UDP
+      port: 53
+
+---
+# Ingress for external access (optional)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: service-a-ingress
+  namespace: s2s-auth-demo
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: service-a.local  # Replace with your domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: service-a
+            port:
+              number: 5000
