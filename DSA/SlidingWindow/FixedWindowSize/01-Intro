@@ -1,0 +1,17 @@
+Sliding Window - Fixed Window Size
+
+O(n) Time and O(1) Space
+
+Without Sliding Window - O(n×k) Time and O(1)
+
+
+Algorithm:
+==========
+Input : array , window_size (k)
+
+Step 1 : Find the length of the array.
+Step 2 : If the length of the array is less than the window size then raise an exception.
+Step 3 : Calculate first k elements sum/or any other operation via [:k] and initialize it sum_of_elememets as max_sum.
+Step 4 : move the slider by one element
+    Step 4.1 : from sum_of_elememets , substract last bit of older window and add the newly added bit in the right of the window
+Step 5 : if sum_of_elememets is greater than max_sum then return sum_of_elememets as max_sum
